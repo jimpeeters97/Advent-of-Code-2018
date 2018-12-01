@@ -1,7 +1,5 @@
 package challenges;
 
-import com.sun.istack.internal.NotNull;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,13 +11,11 @@ import java.util.stream.Collectors;
 
 public class day1 {
     //first challenge
-    public static int calculateResult() {
+    private static int calculateResult() {
         final AtomicInteger result = new AtomicInteger();
         try {
             Files.lines(Paths.get("input/input_day1.txt"))
-                    .forEach(fLine -> {
-                        result.getAndSet(calculateSubResult(result, fLine));
-                    });
+                    .forEach(fLine -> result.getAndSet(calculateSubResult(result, fLine)));
         } catch (IOException | NumberFormatException ex) {
             ex.printStackTrace();
         }
@@ -27,7 +23,7 @@ public class day1 {
     }
 
     //second challenge
-    public static int calculateRepeatFrequency() {
+    private static int calculateRepeatFrequency() {
         final AtomicInteger result = new AtomicInteger();
         List<Integer> resultList = new ArrayList<>();
         boolean isDouble = false;
@@ -49,9 +45,8 @@ public class day1 {
         return 0;
     }
 
-    @NotNull
-    private static int calculateSubResult(@NotNull final AtomicInteger atomicInt,
-                                          @NotNull final String frequencyLine) {
+    private static int calculateSubResult(final AtomicInteger atomicInt,
+                                          final String frequencyLine) {
         int lineFreq = Integer.parseInt(frequencyLine.substring(1));
         if(frequencyLine.startsWith("-")) {
             atomicInt.getAndSet(atomicInt.get() - lineFreq);
