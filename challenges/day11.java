@@ -9,8 +9,7 @@ public class day11 {
             for (int y = 0; y < grid[x].length; y++) {
                 int rackId = x + 11;
                 String subResult = String.valueOf((rackId * (y + 1) + gridSerial) * rackId);
-                int thirdNumber = Integer.parseInt(subResult.substring(subResult.length() - 3, subResult.length() - 2));
-                grid[x][y] = thirdNumber - 5;
+                grid[x][y] = Integer.parseInt(subResult.substring(subResult.length() - 3, subResult.length() - 2)) - 5;
             }
         }
         return grid;
@@ -34,7 +33,6 @@ public class day11 {
                     }
                 }
             }
-            System.out.println(size);
         }
         return topLeftCell;
     }
